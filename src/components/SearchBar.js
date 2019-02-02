@@ -14,17 +14,22 @@ class SearchBar extends Component {
 
     //remember: add onChange={this.onInputchange} to some input
 
-    onFormSubmit(event) {
+    onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.term);
-    }
+        // console.log(this.state.term);
+
+        this.props.onSearchSubmit(this.state.term); //props object on class based components should be referenced as this.props
+
+
+    };
 
 
     render() {
         return (<div className="ui segment">
             <form onSubmit={this.onFormSubmit} action="#" className="ui form">
                 <label>Image Search</label>
-                <input type="text" className="field" value={this.state.term} onChange={(e) => this.setState({term: e.target.value})}  />
+                <input type="text" className="field" value={this.state.term}
+                       onChange={(e) => this.setState({term: e.target.value})}/>
             </form>
 
 
